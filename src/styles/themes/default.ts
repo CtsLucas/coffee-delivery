@@ -28,8 +28,8 @@ export const defaultTheme = {
   },
 
   fontFamily: {
-    text: 'Roboto',
-    header: 'Baloo 2',
+    text: '"Roboto"',
+    header: '"Baloo 2"',
   },
 
   fontSize: {
