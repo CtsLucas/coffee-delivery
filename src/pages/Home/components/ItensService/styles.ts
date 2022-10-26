@@ -42,4 +42,8 @@ export const IconService = styled.div<ItensServiceProps>`
   border-radius: 50%;
 
   ${({ type }) => iconServiceVariants[type]}
+
+  & > svg {
+    color: ${({ theme }) => theme.colors.white};
+  }
 `

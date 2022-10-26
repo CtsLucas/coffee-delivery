@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const HomeContainer = styled.main`
+export const HomeContainer = styled.main``
+
+export const HomeHeader = styled.div`
   display: flex;
   padding: 5.875rem 0;
 `

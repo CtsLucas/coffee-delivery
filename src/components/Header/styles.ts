@@ -22,6 +22,22 @@ export const Location = styled.div`
   padding: 10px 8px;
   border-radius: 6px;
   color: ${({ theme }) => theme.colors.purple.main};
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.purple.main};
+    color: ${({ theme }) => theme.colors.purple.light};
+    cursor: pointer;
+
+    & > svg {
+      color: ${({ theme }) => theme.colors.purple.light};
+    }
+  }
+
+  & > svg {
+    color: ${({ theme }) => theme.colors.purple.main};
+    transition: all 0.2s ease-in-out;
+  }
 `
 
 export const Cart = styled.div`
@@ -32,4 +48,19 @@ export const Cart = styled.div`
   background: ${({ theme }) => theme.colors.yellow.light};
   padding: 10px 8px;
   border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.yellow.main};
+    cursor: pointer;
+
+    & > svg {
+      color: ${({ theme }) => theme.colors.yellow.light};
+    }
+  }
+
+  & > svg {
+    color: ${({ theme }) => theme.colors.yellow.dark};
+    transition: all 0.2s ease-in-out;
+  }
 `

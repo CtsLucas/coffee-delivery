@@ -1,4 +1,3 @@
-import { useTheme } from 'styled-components'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
 import { ItemServiceContainer, IconService } from './styles'
@@ -9,14 +8,12 @@ interface ItensServiceProps {
 }
 
 export function ItensService({ icon, label }: ItensServiceProps) {
-  const { colors } = useTheme()
-
   switch (icon) {
     case 'coffee':
       return (
         <ItemServiceContainer>
           <IconService type={icon}>
-            <Coffee size={16} color={colors.white} weight="fill" />
+            <Coffee size={16} weight="fill" />
           </IconService>
           <span>{label}</span>
         </ItemServiceContainer>
@@ -25,7 +22,7 @@ export function ItensService({ icon, label }: ItensServiceProps) {
       return (
         <ItemServiceContainer>
           <IconService type={icon}>
-            <Package size={16} color={colors.white} weight="fill" />
+            <Package size={16} weight="fill" />
           </IconService>
           <span>{label}</span>
         </ItemServiceContainer>
@@ -34,7 +31,7 @@ export function ItensService({ icon, label }: ItensServiceProps) {
       return (
         <ItemServiceContainer>
           <IconService type={icon}>
-            <ShoppingCart size={16} color={colors.white} weight="fill" />
+            <ShoppingCart size={16} weight="fill" />
           </IconService>
           <span>{label}</span>
         </ItemServiceContainer>
@@ -43,7 +40,7 @@ export function ItensService({ icon, label }: ItensServiceProps) {
       return (
         <ItemServiceContainer>
           <IconService type={icon}>
-            <Timer size={16} color={colors.white} weight="fill" />
+            <Timer size={16} weight="fill" />
           </IconService>
           <span>{label}</span>
         </ItemServiceContainer>
