@@ -1,3 +1,10 @@
+import { FormAddress } from './components/FormAddress'
+import { CheckoutContainer } from './styles'
+
 export function Checkout() {
-  return <h1>Checkout Page</h1>
+  return (
+    <CheckoutContainer>
+      <FormAddress />
+    </CheckoutContainer>
+  )
 }

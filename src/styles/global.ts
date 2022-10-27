@@ -17,10 +17,15 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.fontFamily.text}, sans-serif;
     font-weight: 400;
     font-size: 1rem;
+    border: none;
   }
 
   button {
-    border: none;
     cursor: pointer;
+  }
+
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.yellow.dark};
   }
 `
