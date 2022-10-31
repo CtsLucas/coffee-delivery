@@ -10,37 +10,51 @@ export const FormContainer = styled.div`
 
     margin-bottom: 1rem;
   }
+
+  & > form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
 `
 
-export const SectionAddress = styled.div`
+export const Section = styled.div`
   background: ${({ theme }) => theme.colors.base.card};
   max-width: 40rem;
   padding: 2.5rem;
   border-radius: 6px;
 `
 
-export const SectionAddressHeader = styled.div`
+const BaseSectionHeader = styled.div`
   display: flex;
   gap: 8px;
+`
 
+export const SectionFormHeader = styled(BaseSectionHeader)`
   & > svg {
     color: ${({ theme }) => theme.colors.yellow.dark};
   }
+`
 
-  .header-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+export const SectionPaymentsHeader = styled(BaseSectionHeader)`
+  & > svg {
+    color: ${({ theme }) => theme.colors.purple.main};
   }
+`
 
-  .header-content > .header-title {
+export const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  & > .header-title {
     font-size: ${({ theme }) => theme.fontSize.medium};
     color: ${({ theme }) => theme.colors.base.subtitle};
     font-weight: 400;
     line-height: 21px;
   }
 
-  .header-content > .header-subtitle {
+  & > .header-subtitle {
     font-size: ${({ theme }) => theme.fontSize.small};
     color: ${({ theme }) => theme.colors.base.text};
     font-weight: 400;
@@ -74,7 +88,6 @@ export const SectionAddressForm = styled.div`
     font-style: italic;
   }
 `
-
 interface InputProps {
   maxWidth?: number
 }
@@ -95,4 +108,9 @@ export const Input = styled.input<InputProps>`
   &::placeholder {
     color: ${({ theme }) => theme.colors.base.label};
   }
+`
+export const SectionPayments = styled.div`
+  display: flex;
+  gap: 12px;
+  margin-top: 2rem;
 `

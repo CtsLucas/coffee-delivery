@@ -1,10 +1,14 @@
-import { MapPinLine } from 'phosphor-react'
+import { CurrencyDollar, MapPinLine } from 'phosphor-react'
+import { ToggleButton } from '../ToggleButton'
 import {
   FormContainer,
-  Input,
-  SectionAddress,
+  Section,
   SectionAddressForm,
-  SectionAddressHeader,
+  SectionFormHeader,
+  SectionPayments,
+  SectionPaymentsHeader,
+  HeaderContent,
+  Input,
 } from './styles'
 
 export function FormAddress() {
@@ -13,16 +17,16 @@ export function FormAddress() {
       <h2>Complete seu pedido</h2>
 
       <form action="">
-        <SectionAddress>
-          <SectionAddressHeader>
+        <Section>
+          <SectionFormHeader>
             <MapPinLine size={22} />
-            <div className="header-content">
+            <HeaderContent>
               <span className="header-title">Endereço de Entrega</span>
               <span className="header-subtitle">
                 Informe o endereço onde deseja receber seu pedido
               </span>
-            </div>
-          </SectionAddressHeader>
+            </HeaderContent>
+          </SectionFormHeader>
 
           <SectionAddressForm>
             <div className="form-row">
@@ -62,7 +66,23 @@ export function FormAddress() {
               <Input id="uf" type="text" placeholder="UF" maxWidth={60} />
             </div>
           </SectionAddressForm>
-        </SectionAddress>
+        </Section>
+
+        <Section>
+          <SectionPaymentsHeader>
+            <CurrencyDollar size={22} />
+            <HeaderContent>
+              <span className="header-title">Pagamento</span>
+              <span className="header-subtitle">
+                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+              </span>
+            </HeaderContent>
+          </SectionPaymentsHeader>
+
+          <SectionPayments>
+            <ToggleButton />
+          </SectionPayments>
+        </Section>
       </form>
     </FormContainer>
   )
