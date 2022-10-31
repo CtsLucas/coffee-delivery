@@ -3,12 +3,17 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
-
   padding: 2rem 0;
+  box-shadow: none;
 
   & > div {
+    max-height: 2.5rem;
     display: flex;
     gap: 0.75rem;
+  }
+
+  & > a {
+    box-shadow: none;
   }
 `
 
@@ -50,16 +55,20 @@ export const Cart = styled.div`
   border-radius: 6px;
   transition: all 0.2s ease-in-out;
 
+  & > a {
+    box-shadow: none;
+  }
+
   &:hover {
     background: ${({ theme }) => theme.colors.yellow.main};
     cursor: pointer;
 
-    & > svg {
+    & > a > svg {
       color: ${({ theme }) => theme.colors.yellow.light};
     }
   }
 
-  & > svg {
+  & > a > svg {
     color: ${({ theme }) => theme.colors.yellow.dark};
     transition: all 0.2s ease-in-out;
   }
