@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const FormContainer = styled.div`
+  width: 100%;
+  max-width: 40rem;
+
   & > h2 {
     font-family: ${({ theme }) => theme.fontFamily.header};
     font-size: ${({ theme }) => theme.fontSize.large};

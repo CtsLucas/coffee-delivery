@@ -43,6 +43,10 @@ export const ToggleButtonContainer = styled.div`
       font-weight: 400;
       line-height: 19px;
       text-transform: uppercase;
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.base.subtitle};
+      }
     }
   }
 `
