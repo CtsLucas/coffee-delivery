@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const ItemServiceContainer = styled.div`
+export const IconLabelContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -14,11 +14,17 @@ export const ItemServiceContainer = styled.div`
   }
 `
 
-interface ItensServiceProps {
-  type: 'coffee' | 'package' | 'shoppingCart' | 'timer'
+interface IconLabelProps {
+  type:
+    | 'coffee'
+    | 'package'
+    | 'shoppingCart'
+    | 'timer'
+    | 'mapPin'
+    | 'currencyDollar'
 }
 
-const iconServiceVariants = {
+const iconLabelVariants = {
   coffee: css`
     background: ${({ theme }) => theme.colors.purple.main};
   `,
@@ -31,9 +37,15 @@ const iconServiceVariants = {
   timer: css`
     background: ${({ theme }) => theme.colors.yellow.main};
   `,
+  mapPin: css`
+    background: ${({ theme }) => theme.colors.purple.main};
+  `,
+  currencyDollar: css`
+    background: ${({ theme }) => theme.colors.yellow.dark};
+  `,
 }
 
-export const IconService = styled.div<ItensServiceProps>`
+export const IconContainer = styled.div<IconLabelProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +53,7 @@ export const IconService = styled.div<ItensServiceProps>`
   height: 32px;
   border-radius: 50%;
 
-  ${({ type }) => iconServiceVariants[type]}
+  ${({ type }) => iconLabelVariants[type]}
 
   & > svg {
     color: ${({ theme }) => theme.colors.white};

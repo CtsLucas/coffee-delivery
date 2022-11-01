@@ -92,6 +92,7 @@ export const PurchaseButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
+  box-shadow: none;
 
   display: flex;
   align-items: center;
@@ -121,6 +122,7 @@ export const Counter = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: none;
 
     & > svg {
       color: ${({ theme }) => theme.colors.purple.main};

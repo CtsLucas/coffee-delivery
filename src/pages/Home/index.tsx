@@ -1,7 +1,7 @@
-import { ItensService } from './components/ItensService'
 import { Catalog } from './components/Catalog'
 import { HomeContainer, Intro, Banner, HomeHeader } from './styles'
 import banner from '../../assets/banner.png'
+import { IconLabel } from '../../components/IconLabel'
 
 export function Home() {
   return (
@@ -15,18 +15,16 @@ export function Home() {
           </p>
 
           <div>
-            <ItensService icon="shoppingCart" label="Compra simples e segura" />
-            <ItensService
-              icon="package"
-              label="Embalagem mantém o café intacto"
-            />
+            <IconLabel icon="shoppingCart">Compra simples e segura</IconLabel>
+            <IconLabel icon="package">
+              Embalagem mantém o café intacto
+            </IconLabel>
           </div>
           <div>
-            <ItensService icon="timer" label="Entrega rápida e rastreada" />
-            <ItensService
-              icon="coffee"
-              label="O café chega fresquinho até você"
-            />
+            <IconLabel icon="timer">Entrega rápida e rastreada</IconLabel>
+            <IconLabel icon="coffee">
+              O café chega fresquinho até você
+            </IconLabel>
           </div>
         </Intro>
         <Banner>
