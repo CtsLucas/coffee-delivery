@@ -54,10 +54,7 @@ export const Cart = styled.div`
   padding: 10px 8px;
   border-radius: 6px;
   transition: all 0.2s ease-in-out;
-
-  & > a {
-    box-shadow: none;
-  }
+  position: relative;
 
   &:hover {
     background: ${({ theme }) => theme.colors.yellow.main};
@@ -68,8 +65,31 @@ export const Cart = styled.div`
     }
   }
 
+  & > a {
+    box-shadow: none;
+  }
+
   & > a > svg {
     color: ${({ theme }) => theme.colors.yellow.dark};
     transition: all 0.2s ease-in-out;
+  }
+
+  & > span {
+    width: 20px;
+    height: 20px;
+    background-color: ${({ theme }) => theme.colors.yellow.dark};
+    border-radius: 50%;
+
+    font-size: ${({ theme }) => theme.fontSize.xsmall};
+    color: ${({ theme }) => theme.colors.white};
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: -8px;
+    right: -8px;
   }
 `

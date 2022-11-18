@@ -92,7 +92,6 @@ export const PurchaseButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
-  box-shadow: none;
 
   display: flex;
   align-items: center;
@@ -100,6 +99,10 @@ export const PurchaseButton = styled.button`
 
   &:hover {
     background: ${({ theme }) => theme.colors.purple.main};
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.purple.dark};
   }
 
   & > svg {
@@ -124,6 +127,13 @@ export const Counter = styled.div`
     justify-content: center;
     box-shadow: none;
 
+    &:disabled {
+      & > svg {
+        color: ${({ theme }) => theme.colors.base.text};
+        cursor: pointer;
+      }
+    }
+
     & > svg {
       color: ${({ theme }) => theme.colors.purple.main};
       cursor: pointer;
@@ -135,9 +145,11 @@ export const Counter = styled.div`
   }
 
   & > span {
+    width: 18px;
     font-size: ${({ theme }) => theme.fontSize.medium};
     color: ${({ theme }) => theme.colors.base.title};
     font-weight: 400;
     line-height: 21px;
+    text-align: center;
   }
 `

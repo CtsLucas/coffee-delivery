@@ -1,4 +1,6 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../../../contexts/CartContext'
 import {
   Counter,
   ProductCardContainer,
@@ -19,17 +21,28 @@ interface ProductCardProps {
   product: Product
 }
 
-export function ProductCard({
-  product: { name, tags, description, image, price },
-}: ProductCardProps) {
-  const listTags = tags.map((tag) => tag)
+export function ProductCard({ product }: ProductCardProps) {
+  const { name, tags, description, image, price } = product
+  const [quantity, setQuantity] = useState(1)
+  const { handleAddToCart } = useContext(CartContext)
+
+  function handleQuantityToCart(type: 'add' | 'decrease') {
+    switch (type) {
+      case 'add':
+        setQuantity((prevState) => prevState + 1)
+        break
+      case 'decrease':
+        setQuantity((prevState) => prevState - 1)
+        break
+    }
+  }
 
   return (
     <ProductCardContainer>
       <img src={image} alt="" />
 
       <div>
-        {listTags.map((tag) => (
+        {tags.map((tag) => (
           <span key={tag}>{tag}</span>
         ))}
       </div>
@@ -45,16 +58,23 @@ export function ProductCard({
 
         <div>
           <Counter>
-            <button>
+            <button
+              type="button"
+              onClick={() => handleQuantityToCart('decrease')}
+              disabled={quantity === 1}
+            >
               <Minus size={14} weight="bold" />
             </button>
-            <span>1</span>
-            <button>
+            <span>{quantity}</span>
+            <button type="button" onClick={() => handleQuantityToCart('add')}>
               <Plus size={14} weight="bold" />
             </button>
           </Counter>
 
-          <PurchaseButton>
+          <PurchaseButton
+            type="button"
+            onClick={() => handleAddToCart(product, quantity)}
+          >
             <ShoppingCart size={22} weight="fill" />
           </PurchaseButton>
         </div>
