@@ -25,9 +25,10 @@ export const ShoppingCart = styled.div`
 `
 
 export const ListShoppingCart = styled.div`
-  max-height: 27.313rem;
+  max-height: 28.875rem;
+  border-top: 1px solid ${({ theme }) => theme.colors.base.button};
   border-bottom: 1px solid ${({ theme }) => theme.colors.base.button};
-  padding-right: 1rem;
+  padding: 1.5rem 0.5rem 0;
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -42,6 +43,21 @@ export const ListShoppingCart = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.colors.base.label};
     border-radius: 20px;
+  }
+`
+
+export const EmptyContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 1.5rem;
+
+  & > span {
+    font-family: ${({ theme }) => theme.fontFamily.header};
+    font-size: ${({ theme }) => theme.fontSize.large};
+    font-weight: 700;
   }
 `
 
@@ -89,6 +105,11 @@ export const ButtonConfirm = styled.div`
 
     &:hover {
       background: ${({ theme }) => theme.colors.yellow.dark};
+    }
+
+    &:disabled {
+      background: ${({ theme }) => theme.colors.base.label};
+      cursor: not-allowed;
     }
   }
 `

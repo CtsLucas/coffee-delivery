@@ -37,6 +37,11 @@ export function ProductCard({ product }: ProductCardProps) {
     }
   }
 
+  function addToCart(product: Product) {
+    handleAddToCart(product, quantity)
+    setQuantity(1)
+  }
+
   return (
     <ProductCardContainer>
       <img src={image} alt="" />
@@ -71,10 +76,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </button>
           </Counter>
 
-          <PurchaseButton
-            type="button"
-            onClick={() => handleAddToCart(product, quantity)}
-          >
+          <PurchaseButton type="button" onClick={() => addToCart(product)}>
             <ShoppingCart size={22} weight="fill" />
           </PurchaseButton>
         </div>

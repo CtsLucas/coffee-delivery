@@ -2,12 +2,16 @@ import { useContext } from 'react'
 import { CartContext } from '../../../../contexts/CartContext'
 import { formatCurrency } from '../../../../utils/formatCurrency'
 import { CartItem } from './components/CartItem'
+
+import emptyCart from '../../../../assets/emptyCart.png'
+
 import {
   ButtonConfirm,
   PurchaseSummaryContainer,
   ShoppingCart,
   SummaryPrice,
   ListShoppingCart,
+  EmptyContainer,
 } from './styles'
 
 export function PurchaseSummary() {
@@ -23,19 +27,22 @@ export function PurchaseSummary() {
 
       <ShoppingCart>
         <ListShoppingCart>
-          {
-            cartItems
-              ? cartItems.map((cartItem) => {
-                  return (
-                    <CartItem
-                      key={cartItem.product.id}
-                      product={cartItem.product}
-                      quantity={cartItem.quantity}
-                    />
-                  )
-                })
-              : null /* TO-DO: Adicionar uma mensagem ou uma imagem informando que o carrinho está vazio. */
-          }
+          {cartItems.length > 0 ? (
+            cartItems.map((cartItem) => {
+              return (
+                <CartItem
+                  key={cartItem.product.id}
+                  product={cartItem.product}
+                  quantity={cartItem.quantity}
+                />
+              )
+            })
+          ) : (
+            <EmptyContainer>
+              <img src={emptyCart} alt="" />
+              <span>Seu carrinho está vazio!</span>
+            </EmptyContainer>
+          )}
         </ListShoppingCart>
 
         <SummaryPrice>
@@ -54,7 +61,9 @@ export function PurchaseSummary() {
         </SummaryPrice>
 
         <ButtonConfirm>
-          <button>Confirmar Pedido</button>
+          <button type="button" disabled={cartItems.length === 0}>
+            Confirmar Pedido
+          </button>
         </ButtonConfirm>
       </ShoppingCart>
     </PurchaseSummaryContainer>
