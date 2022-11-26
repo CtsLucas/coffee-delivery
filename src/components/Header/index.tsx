@@ -1,10 +1,12 @@
+import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
-import { Cart, HeaderContainer, Location } from './styles'
-import logo from '../../assets/logo.svg'
-import { NavLink } from 'react-router-dom'
-import { useContext } from 'react'
 import { CartContext } from '../../contexts/CartContext'
+
+import logo from '../../assets/logo.svg'
+
+import { Cart, HeaderContainer, Location } from './styles'
 
 export function Header() {
   const { cartItems } = useContext(CartContext)

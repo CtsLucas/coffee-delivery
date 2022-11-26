@@ -10,6 +10,7 @@ interface CartContextProps {
   handleAddToCart: (product: Product, quantity?: number) => void
   handleDecrementCartItem: (product: Product) => void
   handleRemoveCartItem: (product: Product) => void
+  handleConfirmOrder: () => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
@@ -72,10 +73,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   }
 
   function handleRemoveCartItem(product: Product) {
-    console.log(
-      '🚀 ~ file: CartContext.tsx ~ line 75 ~ handleRemoveCartItem ~ product',
-      product,
-    )
     setCartItems((prevState) => {
       const itemIndex = prevState.findIndex(
         (cartItem) => cartItem.product.id === product.id,
@@ -89,6 +86,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     })
   }
 
+  function handleConfirmOrder() {
+    setCartItems([])
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -97,6 +98,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         handleAddToCart,
         handleDecrementCartItem,
         handleRemoveCartItem,
+        handleConfirmOrder,
       }}
     >
       {children}

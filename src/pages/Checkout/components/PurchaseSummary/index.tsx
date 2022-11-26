@@ -61,7 +61,7 @@ export function PurchaseSummary() {
         </SummaryPrice>
 
         <ButtonConfirm>
-          <button type="button" disabled={cartItems.length === 0}>
+          <button type="submit" disabled={cartItems.length === 0}>
             Confirmar Pedido
           </button>
         </ButtonConfirm>
