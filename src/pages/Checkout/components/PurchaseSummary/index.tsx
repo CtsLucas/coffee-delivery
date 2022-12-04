@@ -1,4 +1,6 @@
 import { useContext } from 'react'
+import { useFormContext } from 'react-hook-form'
+
 import { CartContext } from '../../../../contexts/CartContext'
 import { formatCurrency } from '../../../../utils/formatCurrency'
 import { CartItem } from './components/CartItem'
@@ -16,6 +18,21 @@ import {
 
 export function PurchaseSummary() {
   const { cartItems } = useContext(CartContext)
+  const { watch } = useFormContext()
+
+  const fieldsForm = watch([
+    'zipCode',
+    'street',
+    'number',
+    'district',
+    'city',
+    'uf',
+    'methodPayment',
+  ])
+
+  const formValidation = Object.values(fieldsForm)
+    .map((fields) => !!fields)
+    .includes(false)
 
   const total = cartItems?.reduce((acc, cartItem) => {
     return acc + cartItem.quantity * cartItem.product.price
@@ -61,7 +78,10 @@ export function PurchaseSummary() {
         </SummaryPrice>
 
         <ButtonConfirm>
-          <button type="submit" disabled={cartItems.length === 0}>
+          <button
+            type="submit"
+            disabled={cartItems.length === 0 || formValidation}
+          >
             Confirmar Pedido
           </button>
         </ButtonConfirm>

@@ -26,6 +26,7 @@ export const Section = styled.div`
   max-width: 40rem;
   padding: 2.5rem;
   border-radius: 6px;
+  margin-top: 12px;
 `
 
 const BaseSectionHeader = styled.div`

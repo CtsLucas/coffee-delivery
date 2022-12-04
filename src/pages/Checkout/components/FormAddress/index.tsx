@@ -1,7 +1,10 @@
 import { CurrencyDollar, MapPinLine } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
+import axios from 'axios'
 
+import { formatCEP } from '../../../../utils/formatCep'
 import { ToggleButton } from '../ToggleButton'
+
 import {
   FormContainer,
   Section,
@@ -14,7 +17,27 @@ import {
 } from './styles'
 
 export function FormAddress() {
-  const { register, control } = useFormContext()
+  const { register, control, setValue } = useFormContext()
+
+  async function handleZipCode(zipCode: string) {
+    if (!zipCode || zipCode.length < 8) {
+      return
+    }
+
+    setValue('zipCode', formatCEP(zipCode))
+
+    try {
+      const { data } = await axios.get(
+        `https://viacep.com.br/ws/${zipCode}/json/`,
+      )
+      setValue('street', data.logradouro)
+      setValue('district', data.bairro)
+      setValue('city', data.localidade)
+      setValue('uf', data.uf)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <FormContainer>
@@ -37,8 +60,11 @@ export function FormAddress() {
               id="zipCode"
               type="text"
               placeholder="CEP"
+              maxLength={8}
               maxWidth={200}
-              {...register('zipCode')}
+              {...register('zipCode', {
+                onBlur: (input) => handleZipCode(input.target.value),
+              })}
             />
           </div>
 
@@ -89,6 +115,7 @@ export function FormAddress() {
               type="text"
               placeholder="UF"
               maxWidth={60}
+              maxLength={2}
               {...register('uf')}
             />
           </div>
