@@ -35,7 +35,7 @@ export function PurchaseSummary() {
     .includes(false)
 
   const total = cartItems?.reduce((acc, cartItem) => {
-    return acc + cartItem.quantity * cartItem.product.price
+    return acc + cartItem.quantity * cartItem.product.price!
   }, 0)
 
   return (

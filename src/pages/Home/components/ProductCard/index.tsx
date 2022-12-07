@@ -14,7 +14,7 @@ interface Product {
   tags: string[]
   description: string
   image: string
-  price: number
+  price?: number
 }
 
 interface ProductCardProps {
@@ -55,31 +55,39 @@ export function ProductCard({ product }: ProductCardProps) {
       <h3>{name}</h3>
 
       <p>{description}</p>
-
       <PurchaseField>
-        <p>
-          R$ <span>{price}</span>
-        </p>
+        {price ? (
+          <>
+            <p>
+              R$ <span>{price}</span>
+            </p>
 
-        <div>
-          <Counter>
-            <button
-              type="button"
-              onClick={() => handleQuantityToCart('decrease')}
-              disabled={quantity === 1}
-            >
-              <Minus size={14} weight="bold" />
-            </button>
-            <span>{quantity}</span>
-            <button type="button" onClick={() => handleQuantityToCart('add')}>
-              <Plus size={14} weight="bold" />
-            </button>
-          </Counter>
+            <div>
+              <Counter>
+                <button
+                  type="button"
+                  onClick={() => handleQuantityToCart('decrease')}
+                  disabled={quantity === 1}
+                >
+                  <Minus size={14} weight="bold" />
+                </button>
+                <span>{quantity}</span>
+                <button
+                  type="button"
+                  onClick={() => handleQuantityToCart('add')}
+                >
+                  <Plus size={14} weight="bold" />
+                </button>
+              </Counter>
 
-          <PurchaseButton type="button" onClick={() => addToCart(product)}>
-            <ShoppingCart size={22} weight="fill" />
-          </PurchaseButton>
-        </div>
+              <PurchaseButton type="button" onClick={() => addToCart(product)}>
+                <ShoppingCart size={22} weight="fill" />
+              </PurchaseButton>
+            </div>
+          </>
+        ) : (
+          <strong>Produto indisponível</strong>
+        )}
       </PurchaseField>
     </ProductCardContainer>
   )

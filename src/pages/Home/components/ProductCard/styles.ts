@@ -83,6 +83,20 @@ export const PurchaseField = styled.div`
     display: flex;
     gap: 0.5rem;
   }
+
+  & > strong {
+    display: flex;
+    width: 100%;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+
+    font-family: ${({ theme }) => theme.fontFamily.header};
+    font-size: ${({ theme }) => theme.fontSize.large};
+    color: ${({ theme }) => theme.colors.danger};
+    line-height: 32px;
+    font-weight: 700;
+  }
 `
 
 export const PurchaseButton = styled.button`

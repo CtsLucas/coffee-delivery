@@ -109,10 +109,10 @@ export const catalogProducts = [
   },
   {
     id: 14,
-    name: 'Irlandês',
-    tags: ['Especial', 'Alcoólico'],
-    description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
+    name: 'Ohana',
+    tags: ['Especial', 'Amor'],
+    description:
+      'Bebida a base de amor, carinho e afeto para aquecer o coração',
     image: 'images/irlandes.png',
-    price: 14.99,
   },
 ]

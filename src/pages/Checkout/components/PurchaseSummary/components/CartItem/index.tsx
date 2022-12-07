@@ -20,7 +20,7 @@ export function CartItem({ product, quantity }: CartItemProps) {
       <div className="cart-content">
         <div className="cart-header">
           <h3>{product.name}</h3>
-          <span>{formatCurrency(product.price, true)}</span>
+          <span>{formatCurrency(product.price || 0, true)}</span>
         </div>
 
         <div className="cart-count">

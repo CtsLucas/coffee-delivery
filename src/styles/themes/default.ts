@@ -2,6 +2,7 @@ export const defaultTheme = {
   colors: {
     background: '#FAFAFA',
     white: '#FFFFFF',
+    danger: '#D73035',
 
     yellow: {
       dark: '#C47F17',
