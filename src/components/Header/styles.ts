@@ -45,7 +45,7 @@ export const Location = styled.div`
   }
 `
 
-export const Cart = styled.div`
+export const Cart = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,16 +60,12 @@ export const Cart = styled.div`
     background: ${({ theme }) => theme.colors.yellow.main};
     cursor: pointer;
 
-    & > a > svg {
+    & > svg {
       color: ${({ theme }) => theme.colors.yellow.light};
     }
   }
 
-  & > a {
-    box-shadow: none;
-  }
-
-  & > a > svg {
+  & > svg {
     color: ${({ theme }) => theme.colors.yellow.dark};
     transition: all 0.2s ease-in-out;
   }

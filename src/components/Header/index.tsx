@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
 import { CartContext } from '../../contexts/CartContext'
@@ -10,6 +10,7 @@ import { Cart, HeaderContainer, Location } from './styles'
 
 export function Header() {
   const { cartItems } = useContext(CartContext)
+  const navigate = useNavigate()
 
   return (
     <HeaderContainer>
@@ -22,10 +23,8 @@ export function Header() {
           <MapPin size={22} weight="fill" />
           <span>São Paulo, SP</span>
         </Location>
-        <Cart>
-          <NavLink to="/checkout" title="Checkout">
-            <ShoppingCart size={22} weight="fill" />
-          </NavLink>
+        <Cart onClick={() => navigate('checkout')}>
+          <ShoppingCart size={22} weight="fill" />
           {cartItems?.length > 0 && <span>{cartItems.length}</span>}
         </Cart>
       </div>
