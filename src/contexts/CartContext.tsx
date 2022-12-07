@@ -1,8 +1,24 @@
-import { createContext, ReactNode, useState } from 'react'
+import {
+  useState,
+  useEffect,
+  useReducer,
+  ReactNode,
+  createContext,
+} from 'react'
+
 import { CartItem } from '../@types/Cart'
 import { Product } from '../@types/Product'
 
 import { catalogProducts } from '../mocks/utils'
+
+import { cartReducer } from '../reducers/cart/reducer'
+
+import {
+  addToCartAction,
+  confirmOrderAction,
+  decrementToCartAction,
+  removeToCartAction,
+} from '../reducers/cart/actions'
 
 interface CartContextProps {
   products: Product[]
@@ -21,73 +37,38 @@ interface CartContextProviderProps {
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [products] = useState<Product[]>(catalogProducts)
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, dispatch] = useReducer(cartReducer, [], () => {
+    const storedStateAsJSON = localStorage.getItem(
+      '@coffe-delivery:cart-state-1.0.0',
+    )
+
+    if (storedStateAsJSON) {
+      return JSON.parse(storedStateAsJSON)
+    }
+
+    return []
+  })
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cartItems)
+
+    localStorage.setItem('@coffe-delivery:cart-state-1.0.0', stateJSON)
+  }, [cartItems])
 
   function handleAddToCart(product: Product, quantity: number = 1) {
-    setCartItems((prevState) => {
-      const itemIndex = prevState.findIndex(
-        (cartItem) => cartItem.product.id === product.id,
-      )
-
-      if (itemIndex < 0) {
-        return prevState.concat({
-          quantity,
-          product,
-        })
-      }
-
-      const newCartItems = [...prevState]
-      const item = newCartItems[itemIndex]
-
-      newCartItems[itemIndex] = {
-        ...item,
-        quantity: item.quantity + quantity,
-      }
-
-      return newCartItems
-    })
+    dispatch(addToCartAction(product, quantity))
   }
 
   function handleDecrementCartItem(product: Product) {
-    setCartItems((prevState) => {
-      const itemIndex = prevState.findIndex(
-        (cartItem) => cartItem.product.id === product.id,
-      )
-
-      const item = prevState[itemIndex]
-      const newCartItems = [...prevState]
-
-      if (item.quantity === 1) {
-        newCartItems.splice(itemIndex, 1)
-
-        return newCartItems
-      }
-
-      newCartItems[itemIndex] = {
-        ...item,
-        quantity: item.quantity - 1,
-      }
-
-      return newCartItems
-    })
+    dispatch(decrementToCartAction(product))
   }
 
   function handleRemoveCartItem(product: Product) {
-    setCartItems((prevState) => {
-      const itemIndex = prevState.findIndex(
-        (cartItem) => cartItem.product.id === product.id,
-      )
-
-      const newCartItems = [...prevState]
-
-      newCartItems.splice(itemIndex, 1)
-
-      return newCartItems
-    })
+    dispatch(removeToCartAction(product))
   }
 
   function handleConfirmOrder() {
-    setCartItems([])
+    dispatch(confirmOrderAction())
   }
 
   return (
