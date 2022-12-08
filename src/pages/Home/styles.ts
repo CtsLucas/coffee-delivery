@@ -59,6 +59,7 @@ export const Intro = styled.div`
   & > div {
     display: flex;
     margin-top: 4.25rem;
+    max-width: 600px;
 
     @media screen and (max-width: 900px) {
       margin-top: 2rem;

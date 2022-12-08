@@ -20,7 +20,28 @@ export const SuccessContainer = styled.main`
 
   & > div {
     display: flex;
-    gap: 6.375rem;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      padding: 1rem 0;
+    }
+
+    & > img {
+      width: 100%;
+      max-width: 492px;
+
+      @media screen and (max-width: 1050px) {
+        width: 340px;
+        height: 202px;
+      }
+
+      @media screen and (max-width: 500px) {
+        display: none;
+      }
+    }
   }
 `
 export const OrderInfo = styled.div`
@@ -43,10 +64,19 @@ export const OrderInfo = styled.div`
   flex-direction: column;
   gap: 2rem;
 
+  @media screen and (max-width: 500px) {
+    padding: 1.25rem;
+  }
+
   .info {
     color: ${({ theme }) => theme.colors.base.text};
     font-size: ${({ theme }) => theme.fontSize.medium};
     font-weight: 400;
     line-height: 21px;
+
+    & > p {
+      display: block;
+      width: 100%;
+    }
   }
 `

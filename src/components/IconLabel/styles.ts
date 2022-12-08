@@ -6,8 +6,6 @@ export const IconLabelContainer = styled.div`
   gap: 12px;
   flex: 1;
   width: 100%;
-  max-width: 18.75rem;
-  white-space: nowrap;
 
   & > span {
     font-size: ${({ theme }) => theme.fontSize.medium};
@@ -60,5 +58,6 @@ export const IconContainer = styled.div<IconLabelProps>`
 
   & > svg {
     color: ${({ theme }) => theme.colors.white};
+    width: 32px;
   }
 `
