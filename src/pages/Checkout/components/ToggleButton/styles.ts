@@ -7,6 +7,10 @@ export const ToggleButtonContainer = styled.div`
     display: flex;
     gap: 12px;
     box-shadow: none;
+
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+    }
   }
 
   .toggle-group-item {
@@ -16,8 +20,8 @@ export const ToggleButtonContainer = styled.div`
     padding: 1rem;
     border: 1px solid transparent;
     border-radius: 6px;
-    cursor: pointer;
     box-shadow: none;
+    cursor: pointer;
 
     display: flex;
     align-items: center;

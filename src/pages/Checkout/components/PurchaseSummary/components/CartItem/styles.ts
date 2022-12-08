@@ -6,6 +6,10 @@ export const CartItemContainer = styled.div`
   padding-bottom: 1.5rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.base.button};
 
+  @media screen and (max-width: 340px) {
+    flex-direction: column;
+  }
+
   & > img {
     width: 64px;
     height: 64px;
