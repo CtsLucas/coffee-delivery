@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const CatalogContainer = styled.div`
-  padding-bottom: 10rem;
+  padding-bottom: 2rem;
 
   & > h2 {
     font-family: ${({ theme }) => theme.fontFamily.header};
@@ -14,6 +14,7 @@ export const CatalogContainer = styled.div`
 export const CatalogContent = styled.div`
   margin-top: 3.375rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, 248px);
   grid-gap: 2.5rem 2rem;
+  justify-content: space-evenly;
 `

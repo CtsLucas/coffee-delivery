@@ -27,6 +27,10 @@ export const Section = styled.div`
   padding: 2.5rem;
   border-radius: 6px;
   margin-top: 12px;
+
+  @media screen and (max-width: 500px) {
+    padding: 1.25rem;
+  }
 `
 
 const BaseSectionHeader = styled.div`
@@ -74,6 +78,10 @@ export const SectionAddressForm = styled.div`
     gap: 12px;
     position: relative;
 
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+    }
+
     & + .form-row {
       margin-top: 1rem;
     }
@@ -90,10 +98,14 @@ export const SectionAddressForm = styled.div`
     font-weight: 400;
     line-height: 18px;
     font-style: italic;
+
+    @media screen and (max-width: 500px) {
+      top: 65px;
+    }
   }
 `
 interface InputProps {
-  maxWidth?: number
+  maxWidth?: number | string
 }
 
 export const Input = styled.input<InputProps>`

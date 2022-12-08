@@ -4,6 +4,10 @@ export const PurchaseSummaryContainer = styled.div`
   width: 100%;
   max-width: 28rem;
 
+  @media screen and (max-width: 1000px) {
+    max-width: 40rem;
+  }
+
   & > h2 {
     font-family: ${({ theme }) => theme.fontFamily.header};
     font-size: ${({ theme }) => theme.fontSize.large};
@@ -22,6 +26,10 @@ export const ShoppingCart = styled.div`
   border-radius: 6px;
   border-top-right-radius: 44px;
   border-bottom-left-radius: 44px;
+
+  @media screen and (max-width: 500px) {
+    padding: 1.5rem;
+  }
 `
 
 export const ListShoppingCart = styled.div`

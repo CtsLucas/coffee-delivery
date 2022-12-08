@@ -39,6 +39,9 @@ export function FormAddress() {
     }
   }
 
+  const screenWidth = window ? window.screen.width : 0
+  const layoutFormMobile = screenWidth ? screenWidth <= 500 : false
+
   return (
     <FormContainer>
       <h2>Complete seu pedido</h2>
@@ -61,7 +64,7 @@ export function FormAddress() {
               type="text"
               placeholder="CEP"
               maxLength={8}
-              maxWidth={200}
+              maxWidth={layoutFormMobile ? '100%' : 200}
               {...register('zipCode', {
                 onBlur: (input) => handleZipCode(input.target.value),
               })}
@@ -76,13 +79,12 @@ export function FormAddress() {
               {...register('street')}
             />
           </div>
-          {/* TO-DO: Remover a classe "optional" quando houver conteúdo */}
           <div className="form-row optional">
             <Input
               id="number"
               type="text"
               placeholder="Número"
-              maxWidth={200}
+              maxWidth={layoutFormMobile ? '100%' : 200}
               {...register('number')}
             />
 
@@ -99,7 +101,7 @@ export function FormAddress() {
               id="district"
               type="text"
               placeholder="Bairro"
-              maxWidth={200}
+              maxWidth={layoutFormMobile ? '100%' : 200}
               {...register('district')}
             />
 
@@ -114,7 +116,7 @@ export function FormAddress() {
               id="uf"
               type="text"
               placeholder="UF"
-              maxWidth={60}
+              maxWidth={layoutFormMobile ? '100%' : 60}
               maxLength={2}
               {...register('uf')}
             />
