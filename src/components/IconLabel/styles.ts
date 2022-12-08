@@ -5,6 +5,9 @@ export const IconLabelContainer = styled.div`
   align-items: center;
   gap: 12px;
   flex: 1;
+  width: 100%;
+  max-width: 18.75rem;
+  white-space: nowrap;
 
   & > span {
     font-size: ${({ theme }) => theme.fontSize.medium};
