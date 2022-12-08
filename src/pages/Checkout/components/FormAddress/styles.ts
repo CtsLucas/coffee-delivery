@@ -105,7 +105,7 @@ export const SectionAddressForm = styled.div`
   }
 `
 interface InputProps {
-  maxWidth?: number
+  maxWidth?: number | string
 }
 
 export const Input = styled.input<InputProps>`
