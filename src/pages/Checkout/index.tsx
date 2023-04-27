@@ -8,6 +8,7 @@ import { CartContext } from '../../contexts/CartContext'
 import { FormAddress } from './components/FormAddress'
 import { PurchaseSummary } from './components/PurchaseSummary'
 import { CheckoutContainer } from './styles'
+import { gaEvents } from '../../lib/events'
 
 const newOrderValidationSchema = zod.object({
   zipCode: zod.string().length(9, 'Digite um CEP válido!'),
@@ -21,6 +22,8 @@ const newOrderValidationSchema = zod.object({
 })
 
 export function Checkout() {
+  gaEvents.pageView('Checkout')
+
   const confirmFormOrder = useForm({
     resolver: zodResolver(newOrderValidationSchema),
     defaultValues: {

@@ -1,14 +1,22 @@
 import ReactGA from 'react-ga4'
+import { Product } from '../@types/Product'
 
-const signIn = () => {
+const pageView = (page: string) => {
+  ReactGA.send({ hitType: 'pageview', page })
+}
+
+const addToCart = (product: Product) => {
   ReactGA.event({
-    category: 'User',
-    action: 'Sign In',
+    action: 'Add To Cart',
+    category: 'Ecommerce',
+    label: product.name,
+    value: product.price,
   })
 }
 
 const gaEvents = {
-  signIn,
+  addToCart,
+  pageView,
 }
 
 export { gaEvents }

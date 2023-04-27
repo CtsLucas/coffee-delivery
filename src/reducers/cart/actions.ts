@@ -1,4 +1,5 @@
 import { Product } from '../../@types/Product'
+import { gaEvents } from '../../lib/events'
 
 export enum ActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
@@ -8,6 +9,8 @@ export enum ActionTypes {
 }
 
 export function addToCartAction(product: Product, quantity: number) {
+  gaEvents.addToCart(product)
+
   return {
     type: ActionTypes.ADD_TO_CART,
     payload: { product, quantity },
