@@ -4,6 +4,7 @@ import Illustration from '../../assets/illustration.png'
 import { IconLabel } from '../../components/IconLabel'
 
 import { OrderInfo, SuccessContainer } from './styles'
+import { gaEvents } from '../../lib/events'
 
 interface LocationProps {
   city: string
@@ -17,6 +18,8 @@ interface LocationProps {
 }
 
 export function Success() {
+  gaEvents.pageView('Success')
+
   const { state } = useLocation()
   const { street, number, city, district, uf, methodPayment } =
     state as LocationProps
