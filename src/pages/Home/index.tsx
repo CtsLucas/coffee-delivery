@@ -2,8 +2,11 @@ import { Catalog } from './components/Catalog'
 import { HomeContainer, Intro, Banner, HomeHeader } from './styles'
 import banner from '../../assets/banner.png'
 import { IconLabel } from '../../components/IconLabel'
+import { gaEvents } from '../../lib/events'
 
 export function Home() {
+  gaEvents.signIn()
+
   return (
     <HomeContainer>
       <HomeHeader>
