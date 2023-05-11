@@ -18,8 +18,6 @@ interface LocationProps {
 }
 
 export function Success() {
-  gaEvents.pageView('Success')
-
   const { state } = useLocation()
   const { street, number, city, district, uf, methodPayment } =
     state as LocationProps

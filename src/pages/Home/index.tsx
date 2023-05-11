@@ -5,8 +5,6 @@ import { IconLabel } from '../../components/IconLabel'
 import { gaEvents } from '../../lib/events'
 
 export function Home() {
-  gaEvents.pageView('Home')
-
   return (
     <HomeContainer>
       <HomeHeader>

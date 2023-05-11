@@ -22,8 +22,6 @@ const newOrderValidationSchema = zod.object({
 })
 
 export function Checkout() {
-  gaEvents.pageView('Checkout')
-
   const confirmFormOrder = useForm({
     resolver: zodResolver(newOrderValidationSchema),
     defaultValues: {

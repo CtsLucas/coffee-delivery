@@ -1,22 +1,32 @@
-import ReactGA from 'react-ga4'
 import { Product } from '../@types/Product'
 
-const pageView = (page: string) => {
-  ReactGA.send({ hitType: 'pageview', page })
+declare global {
+  interface Window {
+    dataLayer: any
+  }
+}
+
+function gtag(...args: any[]) {
+  window.dataLayer.push(arguments)
 }
 
 const addToCart = (product: Product) => {
-  ReactGA.event({
-    action: 'Add To Cart',
-    category: 'Ecommerce',
-    label: product.name,
+  gtag('event', 'add_to_cart', {
+    currency: 'BRL',
     value: product.price,
+    items: [
+      {
+        item_id: product.id,
+        item_name: product.name,
+        price: product.price,
+        quantity: product.amount,
+      },
+    ],
   })
 }
 
 const gaEvents = {
   addToCart,
-  pageView,
 }
 
 export { gaEvents }
